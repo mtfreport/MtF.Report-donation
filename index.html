@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MtF.Report Donate - 支持我们的行动</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="https://mtf.report" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h1>MtF.Report Donate</h1>
+                    </a>
+                </div>
+                
+                <nav class="nav">
+                    <a href="https://mtf.report" target="_blank" class="nav-link">回到主站</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+        <section class="donation-section">
+            <div class="container">
+                <div class="donation-grid">
+                    <div class="donation-form-container">
+                        <h2 class="section-title">立即捐赠</h2>
+                        <p class="section-subtitle">每一笔捐赠都将直接用于支持跨性别群体的实际行动</p>
+                        
+                        <form class="donation-form" id="donationForm">
+                            <div class="payment-method-selection">
+                                <h3>选择支付方式</h3>
+                                <div class="payment-options">
+                                    <label class="payment-option">
+                                        <input type="radio" name="paymentMethod" value="wechat" class="payment-input">
+                                        <span class="payment-button">
+                                            <i class="fab fa-weixin"></i>
+                                            微信支付
+                                        </span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="paymentMethod" value="alipay" class="payment-input">
+                                        <span class="payment-button">
+                                            <i class="fab fa-alipay"></i>
+                                            支付宝
+                                        </span>
+                                    </label>
+                                    <label class="payment-option disabled">
+                                        <input type="radio" name="paymentMethod" value="paypal" class="payment-input" disabled>
+                                        <span class="payment-button">
+                                            <i class="fab fa-paypal"></i>
+                                            PayPal
+                                        </span>
+                                    </label>
+                                    <label class="payment-option disabled">
+                                        <input type="radio" name="paymentMethod" value="bank" class="payment-input" disabled>
+                                        <span class="payment-button">
+                                            <i class="fas fa-university"></i>
+                                            银行卡转账
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="amount-selection" id="amountSelection">
+                                <h3>选择捐款金额</h3>
+                                <div class="amount-options">
+                                    <label class="amount-option">
+                                        <input type="radio" name="amount" value="5" class="amount-input">
+                                        <span class="amount-button">¥5</span>
+                                    </label>
+                                    <label class="amount-option">
+                                        <input type="radio" name="amount" value="10" class="amount-input">
+                                        <span class="amount-button">¥10</span>
+                                    </label>
+                                    <label class="amount-option">
+                                        <input type="radio" name="amount" value="20" class="amount-input">
+                                        <span class="amount-button">¥20</span>
+                                    </label>
+                                    <label class="amount-option">
+                                        <input type="radio" name="amount" value="50" class="amount-input">
+                                        <span class="amount-button">¥50</span>
+                                    </label>
+                                    <label class="amount-option">
+                                        <input type="radio" name="amount" value="100" class="amount-input">
+                                        <span class="amount-button">¥100</span>
+                                    </label>
+                                    <label class="amount-option">
+                                        <input type="radio" name="amount" value="custom" class="amount-input">
+                                        <span class="amount-button">自定义</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="custom-amount" id="customAmount" style="display: none;">
+                                    <label for="customAmountInput">自定义金额 (¥)</label>
+                                    <input type="number" id="customAmountInput" placeholder="请输入金额" min="1">
+                                </div>
+                            </div>
+
+                            <div class="donation-frequency">
+                                <h3>捐款频率</h3>
+                                <div class="frequency-options">
+                                    <label class="frequency-option">
+                                        <input type="radio" name="frequency" value="one-time">
+                                        <span class="frequency-button">一次性捐款</span>
+                                    </label>
+                                    <label class="frequency-option">
+                                        <input type="radio" name="frequency" value="monthly">
+                                        <span class="frequency-button">按月捐款</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="donor-info">
+                                <h3>捐款人信息</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">姓名 *</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">邮箱 *</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">电话</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">留言 (可选)</label>
+                                    <textarea id="message" name="message" rows="3" placeholder="分享您支持我们的原因..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="donation-summary">
+                                <h3>捐款摘要</h3>
+                                <div class="summary-item">
+                                    <span>捐款金额:</span>
+                                    <span id="summaryAmount">请选择金额</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>捐款频率:</span>
+                                    <span id="summaryFrequency">请选择频率</span>
+                                </div>
+                                <div class="summary-item total">
+                                    <span>总计:</span>
+                                    <span id="summaryTotal">¥0</span>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="qr-code-section" id="qrCodeSection" style="display: none;">
+                            <div class="qr-code-container">
+                                <div class="qr-code-wrapper">
+                                    <div class="qr-image" id="wechatQR" style="display: none;">
+                                        <img src="wechat-qr.png" alt="微信支付二维码" style="width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius-md);" />
+                                    </div>
+                                    <div class="qr-image" id="alipayQR" style="display: none;">
+                                        <img src="alipay-qr.png" alt="支付宝二维码" style="width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius-md);" />
+                                    </div>
+                                    <div class="qr-text" id="wechatText" style="display: none;">
+                                        <h4>微信扫码支付</h4>
+                                        <p>请使用微信扫描二维码完成支付</p>
+                                    </div>
+                                    <div class="qr-text" id="alipayText" style="display: none;">
+                                        <h4>支付宝扫码支付</h4>
+                                        <p>请使用支付宝扫描二维码完成支付</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bank-info-section" id="bankInfoSection" style="display: none;">
+                            <h3>银行卡收款信息</h3>
+                            <div class="bank-info">
+                                <div class="bank-item">
+                                    <i class="fas fa-university"></i>
+                                    <div>
+                                        <h4>开户银行</h4>
+                                        <p>我们还没有办卡呢～</p>
+                                    </div>
+                                </div>
+                                <div class="bank-item">
+                                    <i class="fas fa-user"></i>
+                                    <div>
+                                        <h4>账户名称</h4>
+                                        <p>到时候看是谁开户的吧～</p>
+                                    </div>
+                                </div>
+                                <div class="bank-item">
+                                    <i class="fas fa-credit-card"></i>
+                                    <div>
+                                        <h4>银行账号</h4>
+                                        <p class="bank-account">0000 0000 0000 0000</p>
+                                        <button class="copy-btn" onclick="copyBankAccount()">
+                                            <i class="fas fa-copy"></i> 复制账号
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="donate-button-container">
+                            <button type="submit" class="donate-button" id="donateButton">
+                                <i class="fas fa-heart"></i>
+                                <span id="buttonText">选择支付方式</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="donation-info">
+                        <div class="info-card">
+                            <h3><i class="fas fa-shield-alt"></i> 安全与透明</h3>
+                            <p>我们会严格保护您的个人信息和捐款安全，并定期发布资金使用报告，确保每一笔捐赠都用于支持跨性别群体。</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3><i class="fas fa-heart"></i> 您的捐款将会被如何使用</h3>
+                            <div class="impact-items">
+                                <div class="impact-item">
+                                    <div class="impact-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4>维持运作</h4>
+                                        <p>支持我们继续进行跨性别群体的社会调查并攥写研究报告，坚持为她们发声。</p>
+                                    </div>
+                                </div>
+                                <div class="impact-item">
+                                    <div class="impact-icon">
+                                        <i class="fas fa-hands-helping"></i>
+                                    </div>
+                                    <div>
+                                        <h4>个体援助</h4>
+                                        <p>为需要的个体提供恰当的资金或物资支持。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MtF.Report</h3>
+                    <p>让世界看见她们</p>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p><i class="fas fa-envelope"></i> mail@mtf.report</p>
+                    <p><i class="fab fa-twitter"></i> <a href="https://x.com/MtfReport" target="_blank" rel="noopener noreferrer">@MtfReport</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MtF.Report. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
