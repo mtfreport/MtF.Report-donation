@@ -60,4 +60,4 @@ MtF.Report-donation/
 - Edge 79+
 
 ## 许可证
-本项目采用MIT许可证。 
+本项目采用GPL v3许可证。 
