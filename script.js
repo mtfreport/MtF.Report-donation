@@ -37,6 +37,100 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // 项目切换器逻辑
+    const switchOptions = document.querySelectorAll('.switch-option');
+    let currentProject = 'mtf';
+
+    // OTC 基金会的内容和二维码
+    const opentcContent = {
+        title: '向 OTC 基金会团队发起捐赠',
+        subtitle: 'OTC 基金会是 MtF.Report 团队的合作伙伴，您在这里的每一笔捐赠都将直接交予 OTC 团队并支持他们的公益行动',
+        wechatQR: 'qrcodes/otc-wechat-qr.jpg',
+        alipayQR: 'qrcodes/otc-alipay-qr.jpg',
+        wechatText: '请使用微信扫描二维码向 OTC 团队捐赠',
+        alipayText: '请使用支付宝扫描二维码向 OTC 团队捐赠',
+        infoCards: [
+            {
+                icon: 'fas fa-info-circle',
+                title: '关于 OTC 基金会',
+                desc: 'OTC 基金会是 MtF.Report 团队的合作伙伴，其致力于保护性少数友善者的安全、以实用主义为行动宗旨的开放知识与维护组织，已开通业务：广佛避难所运营维护；反扭转机构救援资助。'
+            },
+            {
+                icon: 'fas fa-shield-alt',
+                title: '安全与透明',
+                desc: '我们会严格保护您的个人信息和捐款安全，并确保每一笔捐赠都用于支持跨性别群体'
+            },
+            {
+                icon: 'fas fa-heart',
+                title: '您的捐款将会被如何使用',
+                desc: '您的捐款将帮助其机构的运作，并支持其公益行动'
+            }
+        ]
+    };
+
+    const mtfContent = {
+        title: '立即捐赠',
+        subtitle: '每一笔向 MtF.Report 团队的捐赠都将直接用于支持跨性别群体的实际行动',
+        wechatQR: 'qrcodes/mtfreport-wechat-qr.png',
+        alipayQR: 'qrcodes/mtfreport-alipay-qr.png',
+        wechatText: '请使用微信扫描二维码完成捐赠',
+        alipayText: '请使用支付宝扫描二维码完成捐赠',
+        infoCards: [
+            {
+                icon: 'fas fa-shield-alt',
+                title: '安全与透明',
+                desc: '我们会严格保护您的个人信息和捐款安全，并定期发布资金使用报告，确保每一笔捐赠都用于支持跨性别群体。'
+            },
+            {
+                icon: 'fas fa-heart',
+                title: '您的捐款将会被如何使用',
+                desc: '支持我们继续进行跨性别群体的社会调查并攥写研究报告，坚持为她们发声。为需要的个体提供恰当的资金或物资支持。'
+            }
+        ]
+    };
+
+    function updateProjectContent(project) {
+        // 标题、副标题
+        document.querySelector('.section-title').textContent = project === 'mtf' ? mtfContent.title : opentcContent.title;
+        document.querySelector('.section-subtitle').textContent = project === 'mtf' ? mtfContent.subtitle : opentcContent.subtitle;
+        // 二维码图片和说明
+        document.querySelector('#wechatQR img').src = project === 'mtf' ? mtfContent.wechatQR : opentcContent.wechatQR;
+        document.querySelector('#alipayQR img').src = project === 'mtf' ? mtfContent.alipayQR : opentcContent.alipayQR;
+        document.getElementById('wechatText').innerHTML = project === 'mtf' ? '<h4>微信扫码支付</h4><p>' + mtfContent.wechatText + '</p>' : '<h4>微信扫码支付</h4><p>' + opentcContent.wechatText + '</p>';
+        document.getElementById('alipayText').innerHTML = project === 'mtf' ? '<h4>支付宝扫码支付</h4><p>' + mtfContent.alipayText + '</p>' : '<h4>支付宝扫码支付</h4><p>' + opentcContent.alipayText + '</p>';
+        // 右侧 info-card
+        const infoCards = project === 'mtf' ? mtfContent.infoCards : opentcContent.infoCards;
+        const infoCardContainer = document.querySelector('.donation-info');
+        infoCardContainer.innerHTML = infoCards.map(card => `
+            <div class="info-card">
+                <h3><i class="${card.icon}"></i> ${card.title}</h3>
+                <p>${card.desc}</p>
+            </div>
+        `).join('');
+        // 支付方式选项显示控制
+        const paypalOption = document.querySelector('input[name="paymentMethod"][value="paypal"]').closest('.payment-option');
+        const bankOption = document.querySelector('input[name="paymentMethod"][value="bank"]').closest('.payment-option');
+        if (project === 'opentc') {
+            paypalOption.style.display = 'none';
+            bankOption.style.display = 'none';
+        } else {
+            paypalOption.style.display = '';
+            bankOption.style.display = '';
+        }
+    }
+
+    switchOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            if (this.classList.contains('active')) return;
+            switchOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            currentProject = this.dataset.project;
+            updateProjectContent(currentProject);
+        });
+    });
+    // 页面加载时初始化内容
+    updateProjectContent(currentProject);
+
     // 页面初始化
     function initializePage() {
         // 获取需要控制的元素
